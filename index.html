@@ -26,45 +26,93 @@
     <div style="width:350px;float:left;padding: 15px;">
         <div class="calculator-settings">
             <div class="calculator-setting" id="calculator_form">
-                <div class="calculator-settings">
-                	<div class="calculator-setting">
-                		<div class="calculator-content col">
-                			<div class="input-wrapper input-wrapper--stretch row">
-                				<label class="input col ">
-                					
-                				
-                					<div class="input-field input-field--fraction col">
-                						<input type="number" oninput="setMaxLength(this, 8)" class="input-field__input" placeholder="0" id="fraction_a_top" value="1"  />
-                						<input type="number" oninput="setMaxLength(this, 8)" class="input-field__input" placeholder="0" id="fraction_a_bottom" value="2"  />
-                					</div>
-                				</label>				<div class="fraction-wrapper">
-                					<div class="fraction-button fraction-button--only">=</div>
-                				</div>
-                				<label class="input col ">
-                					
-                				
-                					<div class="input-field input-field--fraction col">
-                						<input type="number" oninput="setMaxLength(this, 8)" class="input-field__input" placeholder="0" id="fraction_b_top" value="3"  />
-                						<input type="number" oninput="setMaxLength(this, 8)" class="input-field__input" placeholder="0" id="fraction_b_bottom" value="6"  />
-                					</div>
-                				</label>			</div>
-                		</div>
-                
-                		<div class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row  " >
-                		
-                		
-                		
-                		
-                			<button class="button button--primary ml-auto" onclick="calculate(this)">Calculate</button>
-                		</div>
-                		
-                		
-                		
-                		
-                			<script type="text/javascript" src="./assets/js/calculator.js"></script>
-                
-                	</div>
+                <div class="calculator-content calculator-content--bookmarks">
+                	<button class="tab-item tab-item--active" onclick="switchTab(event, 0)">Ratio</button>
+                	<button class="tab-item" onclick="switchTab(event, 1)">Ratio Scaling</button>
                 </div>
+                <div class="calculator-content col">
+                	<div class="input-wrapper input-wrapper--separator row tab tab--active" data-tab="0">
+                		<label class="input col">
+                			
+                			<div class="input-field input-field--ratio row">
+                				<input type="text" placeholder="A" style="--width: 1ch;" onInput="this.style = `--width: ${this.value.length === 0 ? 1 : this.value.length}ch;`" class="input-field__input input-field__input--ratio" id="ab_1" data-target="ab" value="3"/>
+                				<span class="input-field__hint">:</span>
+                				<input type="text" placeholder="B" style="--width: 1ch;" onInput="this.style = `--width: ${this.value.length === 0 ? 1 : this.value.length}ch;`" class="input-field__input input-field__input--ratio" id="ab_2" data-target="ab" value="4"/>
+                			</div>
+                		</label>
+                		<div class="input input--separator col">
+                			<div class="input-field input-field--separator input-field--separator-sky">
+                				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                	<path d="M3.125 12.5H16.875" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                	<path d="M3.125 7.5H16.875" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                			</div>
+                		</div>
+                		<label class="input col">
+                			
+                			<div class="input-field input-field--ratio row">
+                				<input type="text" placeholder="C" style="--width: 3ch;" onInput="this.style = `--width: ${this.value.length === 0 ? 1 : this.value.length}ch;`" class="input-field__input input-field__input--ratio" id="cd_1" data-target="cd" value="600"/>
+                				<span class="input-field__hint">:</span>
+                				<input type="text" placeholder="D" style="--width: 3ch;" onInput="this.style = `--width: ${this.value.length === 0 ? 1 : this.value.length}ch;`" class="input-field__input input-field__input--ratio" id="cd_2" data-target="cd" value=""/>
+                			</div>
+                		</label>
+                	</div>
+                	<div class="input-wrapper row tab" data-tab="1">
+                		<label class="input col">
+                			<p class="input__title">Ratio</p>
+                			<div class="input-field input-field--ratio row">
+                				<input type="text" placeholder="0" style="--width: 3ch;" onInput="this.style = `--width: ${this.value.length === 0 ? 1 : this.value.length}ch;`" class="input-field__input input-field__input--ratio" id="ratio_1" data-target="ratio" value="250"/>
+                				<span class="input-field__hint">:</span>
+                				<input type="text" placeholder="0" style="--width: 3ch;" onInput="this.style = `--width: ${this.value.length === 0 ? 1 : this.value.length}ch;`" class="input-field__input input-field__input--ratio" id="ratio_2" data-target="ratio" value="280"/>
+                			</div>
+                		</label>
+                	</div>
+                	<div class="input-wrapper row tab" data-tab="1">
+                		<label class="input col">
+                			<input type="hidden" value="enlarge" id="operation"/>
+                			<p class="input__title">Operation</p>
+                			<button class="button-switcher button-switcher--active" type="button" onclick="switcher(this, 'operation', '')" value="enlarge" id="operation-a">
+                					<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                			<path d="M5.25 15L15.25 5M5.25 5L15.25 15" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                		</svg>
+                				<span class="button-switcher__text button-switcher__text--active">Enlarge</span>
+                			</button>
+                		</label>
+                		<label class="input col">
+                			<p class="input__title"></p>
+                			<button class="button-switcher" type="button" onclick="switcher(this, 'operation', '')" value="shrink" id="operation-b">
+                					<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                			<path d="M3.875 10H17.625" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                			<path d="M10.75 6.5625C11.6129 6.5625 12.3125 5.86294 12.3125 5C12.3125 4.13706 11.6129 3.4375 10.75 3.4375C9.88706 3.4375 9.1875 4.13706 9.1875 5C9.1875 5.86294 9.88706 6.5625 10.75 6.5625Z" fill="#9CA3AF" />
+                			<path d="M10.75 16.5625C11.6129 16.5625 12.3125 15.8629 12.3125 15C12.3125 14.1371 11.6129 13.4375 10.75 13.4375C9.88706 13.4375 9.1875 14.1371 9.1875 15C9.1875 15.8629 9.88706 16.5625 10.75 16.5625Z" fill="#9CA3AF" />
+                		</svg>
+                				<span class="button-switcher__text">Shrink</span>
+                			</button>
+                		</label>
+                	</div>
+                	<div class="input-wrapper row tab" data-tab="1">
+                		<label class="input col   ">
+                			<p class="input__title">Scale</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder="0"  id="scale" value="2.5"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                </div>
+                
+                <div class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row  " >
+                
+                
+                
+                
+                	<button class="button button--primary ml-auto" onclick="calculate(this)">Calculate</button>
+                </div>
+                
+                
+                
+                
+                	<script type="text/javascript" src="./assets/js/calculator.js"></script>
             </div>
         </div>
     </div>
@@ -81,20 +129,13 @@
         	</div>
         	<div class="col" id="error-list">
         	</div>
-        </div>        <span id="calculator_result"><div class="calculator-result col">
-	<p class="table-cell table-cell--dark table-cell--only-title">Fraction</p>
-	<div class="table-cell table-cell--fraction  row">
-		<div class="col fraction-text">
-			<p class="result-text text-center" id="aNum">1</p>
-			<p class="result-text text-center" id="aDenom">2</p>
-		</div>
-		<p class="result-text">=</p>
-		<div class="col fraction-text">
-			<p class="result-text text-center" id="bNum">3</p>
-			<p class="result-text text-center" id="bDenom">6</p>
-		</div>
-		<p class="result-text" id="result">is <b>true</b></p>
-	</div>
+        </div>        <span id="calculator_result"><div class="calculator-result col tab tab--active" data-tab="0">
+	<p class="table-cell table-cell--dark table-cell--only-title">Answer</p>
+	<p class="table-cell" id="result_ratio">3 : 4 = 600 : 800</p>
+</div>
+<div class="calculator-result col tab" data-tab="1">
+	<p class="table-cell table-cell--dark table-cell--only-title">Answer</p>
+	<p class="table-cell" id="result_scale">250:280 enlarge 2.5 times = 625:700</p>
 </div>
 </span>
     </div>

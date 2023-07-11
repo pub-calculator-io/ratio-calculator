@@ -1,41 +1,57 @@
 function calculate(){
+  switch($('[data-tab].tab--active').dataset.tab){
+    case '0':{
+      // 1. init & validate
+      const optNumber = id => input.get(id).optional().nonZero().val();
+      let a = optNumber('ab_1');
+      let b = optNumber('ab_2');
+      let c = optNumber('cd_1');
+      let d = optNumber('cd_2');
+      input.silent = false;
+      const valuesCount = [a,b,c,d].reduce((count, value) => value==null ? count+1 : count, 0);
+      if(valuesCount != 1){
+        input.error(['ab_1','cd_1'], ('Provide exactly three values to calculate the fourth in the ratio A:B = C:D.'));
+      }
+      if(!input.valid()) return;
 
-  // 1. init & validate
-  const aNum = input.get('fraction_a_top').natural().raw();
-  const aDenom = input.get('fraction_a_bottom').natural().raw();
-  let bNum = input.get('fraction_b_top').optional().natural().raw();
-  let bDenom = input.get('fraction_b_bottom').optional().natural().raw();
-  let isEqual;
-  input.silent = false;
-  if(!input.valid()) return;
+      // 2. calculate
+      const values = {a,b,c,d};
+      const definedValues = names => names.split('').every(name=>values[name]!=null);
+      if(definedValues('abc')) d = calc(`${b}*${c}/${a}`);
+      if(definedValues('abd')) c = calc(`${a}*${d}/${b}`);
+      if(definedValues('acd')) b = calc(`${a}*${d}/${c}`);
+      if(definedValues('bcd')) a = calc(`${b}*${c}/${d}`);
+      const result = `${a} : ${b} = ${c} : ${d}`;
 
-  // 2. calculate
-  if(bNum && !bDenom){
-    bDenom = aDenom * bNum / aNum;
-  }
-  else if(!bNum && bDenom){
-    bNum = aNum * bDenom / aDenom;
-  }
-  else if(bNum && bDenom){
-    isEqual = (aNum / aDenom == bNum / bDenom);
-  }
-  else if(!bNum && !bDenom){
-    const gcf = math.gcd(aNum, aDenom);
-    if(gcf != 1){
-      bNum = aNum / gcf;
-      bDenom = aDenom / gcf;
-    } else {
-      bNum = aNum * 2;
-      bDenom = aDenom * 2;
-    }
-  }
+      // 3. output
+      _('result_ratio').innerHTML = result;
+    }break;
+    case '1':{
+      // 1. init & validate
+      const a = input.get('ratio_1').number().val();
+      const b = input.get('ratio_2').number().val();
+      const scale = input.get('scale').number().val();
+      const operation = input.get('operation').raw();
+      if(!input.valid()) return;
 
-  // 3. output
-  _('aNum').innerText = aNum;
-  _('aDenom').innerText = aDenom;
-  _('bNum').innerText = _('fraction_b_top').value = bNum;
-  _('bDenom').innerText = _('fraction_b_bottom').value = bDenom;
-  _('result').classList[isEqual===undefined?'add':'remove']('hidden');
-  _('result').innerHTML = `is <b>${isEqual}</b>`;
-
+      // 2. calculate
+      let c,d;
+      switch(operation){
+        case 'enlarge': 
+          c = calc(`${a}*${scale}`);
+          d = calc(`${b}*${scale}`);
+        break;
+        case 'shrink': 
+          c = calc(`${a}/${scale}`);
+          d = calc(`${b}/${scale}`);
+        break;
+      }
+      const result = `${a}:${b} ${operation} ${scale} times = ${c}:${d}`;
+       
+      // 3. output
+      _('result_scale').innerHTML = result; 
+    }break;
+  }
 }
+
+window.addEventListener('load', () => math.config({number:'BigNumber', precision: 9}));
