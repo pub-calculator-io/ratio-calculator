@@ -2,7 +2,7 @@
 Contributors: calculatorio
 Tags: 
 Requires at least: 5.0
-Tested up to: 6.2.2
+Tested up to: 6.3.0
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,6 +12,14 @@ The ratio calculator simplifies ratios by bringing ratios to the lowest terms. F
 == Description ==
 
 The ratio calculator simplifies ratios by bringing ratios to the lowest terms. Finds missing values in proportions and compares two given ratios finding if they are equal.
+
+Libraries in use:
+1. https://mathjs.org/
+2. https://katex.org/
+3. https://github.com/aFarkas/lazysizes
+4. https://github.com/RobinHerbots/Inputmask
+5. https://air-datepicker.com/
+6. https://www.chartjs.org/
 
 == Installation ==
 
