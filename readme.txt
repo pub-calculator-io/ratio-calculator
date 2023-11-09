@@ -13,6 +13,8 @@ The ratio calculator simplifies ratios by bringing ratios to the lowest terms. F
 
 The ratio calculator simplifies ratios by bringing ratios to the lowest terms. Finds missing values in proportions and compares two given ratios finding if they are equal.
 
+[Ratio Calculator Homepage](https://www.calculator.io/ratio-calculator/ "Ratio Calculator Homepage")
+
 __Shortcode__
 
 Use the Ratio Calculator shortcode:
