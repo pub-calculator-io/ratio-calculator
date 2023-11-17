@@ -1,6 +1,6 @@
 === Ratio Calculator by Calculator.iO ===
 Contributors: calculatorio
-Tags: 
+Tags: ratio calculator, simplifying ratios, finding missing values in proportions, comparing ratios, ratio conversion, proportion calculations, mathematical ratios, ratio and proportion formulas, calculating equivalent ratios, ratio and proportion applications
 Requires at least: 5.0
 Tested up to: 6.4.0
 Stable tag: 1.0.0
