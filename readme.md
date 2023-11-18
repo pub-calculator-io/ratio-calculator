@@ -1,4 +1,4 @@
-# Ratio Calculator WordPress Widget by [Calculator.iO](https://www.calculator.io/ "Calculator.iO Homepage")
+# Ratio Calculator Widget for WordPress
 
 The ratio calculator simplifies ratios by bringing ratios to the lowest terms. Finds missing values in proportions and compares two given ratios finding if they are equal.
 
