@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Ratio Calculator by www.calculator.io
+Plugin Name: CI Ratio calculator
 Plugin URI: https://www.calculator.io/ratio-calculator/
 Description: The ratio calculator simplifies ratios by bringing ratios to the lowest terms. Finds missing values in proportions and compares two given ratios finding if they are equal.
 Version: 1.0.0

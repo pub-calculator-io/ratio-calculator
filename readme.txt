@@ -1,4 +1,4 @@
-=== Ratio Calculator by www.calculator.io ===
+=== CI Ratio calculator ===
 Contributors: calculatorio
 Tags: ratio calculator, simplifying ratios, finding missing values in proportions, comparing ratios, ratio conversion, proportion calculations, mathematical ratios, ratio and proportion formulas, calculating equivalent ratios, ratio and proportion applications
 Requires at least: 5.0
