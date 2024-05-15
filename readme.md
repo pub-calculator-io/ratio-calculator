@@ -3,7 +3,6 @@
 The ratio calculator simplifies ratios by bringing ratios to the lowest terms. Finds missing values in proportions and compares two given ratios finding if they are equal.
 
 ![Ratio Calculator Input Form](/assets/images/screenshot-1.png "Ratio Calculator Input Form")
-![Ratio Calculator Calculation Results](/assets/images/screenshot-2.png "Ratio Calculator Calculation Results")
 
 ## Installation
 

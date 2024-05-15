@@ -24,7 +24,6 @@ Add the following code to your template where you would like the Ratio Calculato
 == Screenshots ==
 
 1. The Ratio Calculator Input Form.
-2. The Ratio Calculator Calculation Results.
 
 == Installation ==
 
